@@ -19,8 +19,8 @@
 
   <!-- session -->
   <text x="34" y="84"><tspan fill="#7ee787">$ </tspan><tspan fill="#d2a8ff">sprout </tspan><tspan fill="#79c0ff">my-api py</tspan></text>
-  <text x="34" y="110" fill="#8b949e">Created folder: ~/Desktop/proyectos/my-api</text>
-  <text x="34" y="136" fill="#8b949e">Generated 'py' template in: ~/Desktop/proyectos/my-api</text>
+  <text x="34" y="110" fill="#8b949e">Created folder: ~/Desktop/my-api</text>
+  <text x="34" y="136" fill="#8b949e">Generated 'py' template in: ~/Desktop/my-api</text>
 
   <text x="34" y="188"><tspan fill="#7ee787">$ </tspan><tspan fill="#d2a8ff">cd </tspan><tspan fill="#79c0ff">my-api </tspan><tspan fill="#6e7681">&amp;&amp; </tspan><tspan fill="#d2a8ff">python3 </tspan><tspan fill="#79c0ff">main.py Charlie</tspan></text>
   <text x="34" y="214" fill="#e6edf3">Hello, world!</text>

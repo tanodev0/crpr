@@ -34,11 +34,11 @@
   </rect>
 
   <!-- output, appearing line by line -->
-  <text x="30" y="124" fill="#8b949e">Created folder: ~/Desktop/proyectos/my-api
+  <text x="30" y="124" fill="#8b949e">Created folder: ~/Desktop/my-api
     <animate attributeName="opacity" dur="7s" repeatCount="indefinite"
              keyTimes="0;0.34;0.37;0.95;1" values="0;0;1;1;0"/>
   </text>
-  <text x="30" y="150" fill="#8b949e">Generated 'py' template in: ~/Desktop/proyectos/my-api
+  <text x="30" y="150" fill="#8b949e">Generated 'py' template in: ~/Desktop/my-api
     <animate attributeName="opacity" dur="7s" repeatCount="indefinite"
              keyTimes="0;0.45;0.48;0.95;1" values="0;0;1;1;0"/>
   </text>

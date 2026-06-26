@@ -115,7 +115,7 @@ Everything is configured through environment variables — no config file requir
 
 | Variable | Default | Purpose |
 | --- | --- | --- |
-| `SPROUT_PROJECTS_DIR` | `~/Desktop/proyectos` | Base directory where projects are created. |
+| `SPROUT_PROJECTS_DIR` | your OS Desktop | Base directory where projects are created (resolves the real Desktop on macOS, Linux and Windows). |
 | `SPROUT_EDITOR` | `code` | Command used to open the project. Set to `none` to skip opening. |
 | `SPROUT_NO_GIT` | unset | Set to `1` to skip `git init` and the generated `.gitignore`. |
 
@@ -167,7 +167,7 @@ Common aliases work too (`python`, `node`, `rust`, `golang`, `csharp`, `kotlin`,
 
 `sprout` is a single self-contained script with no runtime dependencies beyond a POSIX shell or PowerShell. It:
 
-1. Resolves the projects directory from `SPROUT_PROJECTS_DIR`.
+1. Resolves the projects directory from `SPROUT_PROJECTS_DIR`, defaulting to your OS Desktop.
 2. Creates `<projects-dir>/<name>` (idempotent, an existing folder is reused).
 3. If a language is given, writes the template files and a `README.md`.
 4. Runs `git init` and writes a language-aware `.gitignore`, unless `SPROUT_NO_GIT=1` or the folder already sits inside a repository.

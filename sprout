@@ -10,7 +10,7 @@
 #
 # Configuration (environment variables):
 #   SPROUT_PROJECTS_DIR   Base directory for new projects.
-#                       Default: $HOME/Desktop/proyectos
+#                       Default: the current OS Desktop (e.g. ~/Desktop)
 #   SPROUT_EDITOR         Command used to open the project.
 #                       Default: code   (set to "none" to skip opening)
 #   SPROUT_NO_GIT         Set to 1 to skip creating a git repo + .gitignore.
@@ -22,10 +22,21 @@
 
 set -euo pipefail
 
-SPROUT_VERSION="2.0.0"
+SPROUT_VERSION="2.1.0"
 SPROUT_REPO="https://github.com/tanodev0/sprout"
 
-PROJECTS_DIR="${SPROUT_PROJECTS_DIR:-$HOME/Desktop/proyectos}"
+# Resolve the user's Desktop. On Linux, honor the XDG localized folder name.
+default_desktop() {
+  if command -v xdg-user-dir >/dev/null 2>&1; then
+    local d; d="$(xdg-user-dir DESKTOP 2>/dev/null || true)"
+    if [ -n "$d" ] && [ "$d" != "$HOME" ]; then
+      printf '%s' "$d"; return
+    fi
+  fi
+  printf '%s' "$HOME/Desktop"
+}
+
+PROJECTS_DIR="${SPROUT_PROJECTS_DIR:-$(default_desktop)}"
 EDITOR_CMD="${SPROUT_EDITOR:-code}"
 
 SUPPORTED_LANGS="py js ts c cpp java go rs rb sh html php swift kt cs dart scala pl lua r jl hs ex erl clj groovy m fs pas f90 nim cr zig v d ml rkt scm lisp tcl sql ps1 bat sol elm coffee vb"
@@ -42,7 +53,7 @@ Options:
   --version      Show the version.
 
 Environment:
-  SPROUT_PROJECTS_DIR  Base directory (default: \$HOME/Desktop/proyectos)
+  SPROUT_PROJECTS_DIR  Base directory (default: your Desktop)
   SPROUT_EDITOR        Editor command (default: code; "none" to skip)
   SPROUT_NO_GIT        Set to 1 to skip git init + .gitignore
 

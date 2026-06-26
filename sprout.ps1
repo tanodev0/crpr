@@ -21,7 +21,7 @@
 
 .NOTES
     Configuration via environment variables:
-      SPROUT_PROJECTS_DIR  Base directory (default: <Home>\Desktop\proyectos)
+      SPROUT_PROJECTS_DIR  Base directory (default: your Desktop)
       SPROUT_EDITOR        Editor command (default: code; "none" to skip)
 #>
 [CmdletBinding()]
@@ -35,7 +35,7 @@ param(
 
 $ErrorActionPreference = 'Stop'
 
-$SproutVersion = '2.0.0'
+$SproutVersion = '2.1.0'
 $SproutRepo = 'https://github.com/tanodev0/sprout'
 
 $SupportedLangs = @(
@@ -45,8 +45,13 @@ $SupportedLangs = @(
     'sql','ps1','bat','sol','elm','coffee','vb'
 )
 
-$ProjectsDir = if ($env:SPROUT_PROJECTS_DIR) { $env:SPROUT_PROJECTS_DIR }
-               else { Join-Path $HOME 'Desktop/proyectos' }
+$ProjectsDir = if ($env:SPROUT_PROJECTS_DIR) {
+                   $env:SPROUT_PROJECTS_DIR
+               } else {
+                   # Resolves the real Desktop on Windows (handles OneDrive / localization).
+                   $d = [Environment]::GetFolderPath('DesktopDirectory')
+                   if ([string]::IsNullOrEmpty($d)) { Join-Path $HOME 'Desktop' } else { $d }
+               }
 $EditorCmd = if ($env:SPROUT_EDITOR) { $env:SPROUT_EDITOR } else { 'code' }
 
 function Show-Usage {
@@ -61,7 +66,7 @@ Options:
   --version      Show the version.
 
 Environment:
-  SPROUT_PROJECTS_DIR  Base directory (default: <Home>\Desktop\proyectos)
+  SPROUT_PROJECTS_DIR  Base directory (default: your Desktop)
   SPROUT_EDITOR        Editor command (default: code; "none" to skip)
   SPROUT_NO_GIT        Set to 1 to skip git init + .gitignore
 
