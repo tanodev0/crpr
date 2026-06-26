@@ -35,7 +35,7 @@ param(
 
 $ErrorActionPreference = 'Stop'
 
-$CrprVersion = '1.0.0'
+$CrprVersion = '1.1.0'
 $CrprRepo = 'https://github.com/tanodev0/crpr'
 
 $SupportedLangs = @(
@@ -63,6 +63,7 @@ Options:
 Environment:
   CRPR_PROJECTS_DIR  Base directory (default: <Home>\Desktop\proyectos)
   CRPR_EDITOR        Editor command (default: code; "none" to skip)
+  CRPR_NO_GIT        Set to 1 to skip git init + .gitignore
 
 Examples:
   crpr my-api py
@@ -121,6 +122,52 @@ $RunHint
 > The exact toolchain (compiler/interpreter) must be installed on your system.
 "@
     Write-File 'README.md' $content
+}
+
+function Write-Gitignore {
+    param([string]$Lang)
+    $l = $Lang.ToLower()
+    $family = switch -Regex ($l) {
+        '^(js|ts|javascript|typescript|node|nodejs)$' { 'node'; break }
+        '^(py|python)$'                               { 'python'; break }
+        '^(rs|rust)$'                                 { 'rust'; break }
+        '^(go|golang)$'                               { 'go'; break }
+        '^(java|kt|kotlin|scala|groovy)$'             { 'jvm'; break }
+        '^(cs|csharp|fs|fsharp|vb|dotnet)$'           { 'dotnet'; break }
+        '^(c|cpp|c\+\+|m|objc)$'                      { 'c'; break }
+        '^(swift)$'                                   { 'swift'; break }
+        default                                       { '' }
+    }
+    $base = "# OS`n.DS_Store`nThumbs.db`n`n# Editor`n.idea/`n.vscode/`n*.swp`n"
+    $extra = switch ($family) {
+        'node'   { "`n# Node`nnode_modules/`ndist/`nnpm-debug.log*`n.env`n" }
+        'python' { "`n# Python`n__pycache__/`n*.py[cod]`n.venv/`nvenv/`n*.egg-info/`n.pytest_cache/`nbuild/`ndist/`n" }
+        'rust'   { "`n# Rust`n/target/`n" }
+        'go'     { "`n# Go`n*.exe`n*.test`n*.out`nbin/`n" }
+        'jvm'    { "`n# JVM`n*.class`n*.jar`ntarget/`nbuild/`n.gradle/`n" }
+        'dotnet' { "`n# .NET`nbin/`nobj/`n" }
+        'c'      { "`n# C/C++`n*.o`n*.obj`n*.out`n*.exe`napp`na.out`n" }
+        'swift'  { "`n# Swift`n.build/`n*.o`n" }
+        default  { '' }
+    }
+    Write-File '.gitignore' ($base + $extra)
+}
+
+function Initialize-Git {
+    param([string]$Lang)
+    if ($env:CRPR_NO_GIT -eq '1') { return }
+    if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
+        Write-Warning 'git not found; skipping repository init.'
+        return
+    }
+    git -C $Dest rev-parse --is-inside-work-tree *> $null
+    if ($LASTEXITCODE -eq 0) {
+        Write-Warning 'Already inside a git repository; skipping git init.'
+        return
+    }
+    git -C $Dest init -q | Out-Null
+    Write-Gitignore -Lang $Lang
+    Write-Host 'Initialized git repository with .gitignore'
 }
 
 function New-Template {
@@ -1487,6 +1534,9 @@ End Module
 if (-not [string]::IsNullOrWhiteSpace($Language)) {
     New-Template -Lang $Language | Out-Null
 }
+
+# Initialize version control (git init + .gitignore) unless disabled.
+Initialize-Git -Lang $Language
 
 # Open the project in the configured editor.
 if ($EditorCmd -eq 'none') {

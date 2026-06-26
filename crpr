@@ -13,6 +13,7 @@
 #                       Default: $HOME/Desktop/proyectos
 #   CRPR_EDITOR         Command used to open the project.
 #                       Default: code   (set to "none" to skip opening)
+#   CRPR_NO_GIT         Set to 1 to skip creating a git repo + .gitignore.
 #
 # Supported languages (see the full list with: crpr --langs):
 #   py js ts c cpp java go rs rb sh html php swift kt cs dart scala pl lua r
@@ -21,7 +22,7 @@
 
 set -euo pipefail
 
-CRPR_VERSION="1.0.0"
+CRPR_VERSION="1.1.0"
 CRPR_REPO="https://github.com/tanodev0/crpr"
 
 PROJECTS_DIR="${CRPR_PROJECTS_DIR:-$HOME/Desktop/proyectos}"
@@ -43,6 +44,7 @@ Options:
 Environment:
   CRPR_PROJECTS_DIR  Base directory (default: \$HOME/Desktop/proyectos)
   CRPR_EDITOR        Editor command (default: code; "none" to skip)
+  CRPR_NO_GIT        Set to 1 to skip git init + .gitignore
 
 Examples:
   crpr my-api py
@@ -93,6 +95,53 @@ $run_hint
 
 > The exact toolchain (compiler/interpreter) must be installed on your system.
 EOF
+}
+
+# Write a .gitignore: a base block plus a language-specific block.
+write_gitignore() {
+  local dir="$1" lang="$2" family=""
+  lang="$(printf '%s' "$lang" | tr '[:upper:]' '[:lower:]')"
+  case "$lang" in
+    js|ts|javascript|typescript|node|nodejs) family="node" ;;
+    py|python) family="python" ;;
+    rs|rust) family="rust" ;;
+    go|golang) family="go" ;;
+    java|kt|kotlin|scala|groovy) family="jvm" ;;
+    cs|csharp|fs|fsharp|vb|dotnet) family="dotnet" ;;
+    c|cpp|c++|m|objc) family="c" ;;
+    swift) family="swift" ;;
+  esac
+
+  {
+    printf '# OS\n.DS_Store\nThumbs.db\n\n# Editor\n.idea/\n.vscode/\n*.swp\n'
+    case "$family" in
+      node)   printf '\n# Node\nnode_modules/\ndist/\nnpm-debug.log*\n.env\n' ;;
+      python) printf '\n# Python\n__pycache__/\n*.py[cod]\n.venv/\nvenv/\n*.egg-info/\n.pytest_cache/\nbuild/\ndist/\n' ;;
+      rust)   printf '\n# Rust\n/target/\n' ;;
+      go)     printf '\n# Go\n*.exe\n*.test\n*.out\nbin/\n' ;;
+      jvm)    printf '\n# JVM\n*.class\n*.jar\ntarget/\nbuild/\n.gradle/\n' ;;
+      dotnet) printf '\n# .NET\nbin/\nobj/\n' ;;
+      c)      printf '\n# C/C++\n*.o\n*.obj\n*.out\n*.exe\napp\na.out\n' ;;
+      swift)  printf '\n# Swift\n.build/\n*.o\n' ;;
+    esac
+  } > "$dir/.gitignore"
+}
+
+# Initialize a git repo (unless disabled, git is missing, or already inside one).
+init_git() {
+  local dir="$1" lang="$2"
+  [ "${CRPR_NO_GIT:-}" = "1" ] && return 0
+  if ! command -v git >/dev/null 2>&1; then
+    echo "Note: git not found; skipping repository init." >&2
+    return 0
+  fi
+  if git -C "$dir" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    echo "Note: already inside a git repository; skipping git init." >&2
+    return 0
+  fi
+  git -C "$dir" init -q
+  write_gitignore "$dir" "$lang"
+  echo "Initialized git repository with .gitignore"
 }
 
 # Generate template files for a language code.
@@ -1463,6 +1512,9 @@ EOF
 if [ "$#" -ge 2 ] && [ -n "${2// }" ]; then
   generate_template "$2" "$DEST"
 fi
+
+# Initialize version control (git init + .gitignore) unless disabled.
+init_git "$DEST" "${2:-}"
 
 # Open the project in the configured editor.
 if [ "$EDITOR_CMD" = "none" ]; then

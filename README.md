@@ -27,6 +27,7 @@ The same `crpr <name> <language>` works across **47 languages**, so you never ha
 - **Zero friction to start.** Idea to a running file in one command. No templates to copy, no boilerplate to recall.
 - **One mental model for every language.** Python, Rust, Go, C++, Haskell, Solidity — same command, predictable result.
 - **Real starters, not empty files.** Each template is a small idiomatic program with a function, a loop, command-line argument handling and formatted output. It compiles or runs immediately.
+- **Version control from the start.** Every scaffold is a git repository with a language-aware `.gitignore`, so your first commit stays clean. Opt out with `CRPR_NO_GIT=1`.
 - **A README in every project.** Each scaffold ships with run instructions for that exact language.
 - **Customizable and portable.** Configure the projects directory and editor with environment variables. Bash, PowerShell and a `cmd.exe` launcher are included, so it drops into virtually any terminal.
 
@@ -39,12 +40,21 @@ A scaffold is a working program from the first second, not a blank file:
 </p>
 
 ```text
-my-api/
-├── README.md     generated, with run instructions for this language
-└── main.py       idiomatic starter that runs as-is
+my-api/                initialized git repository
+├── .gitignore         language-aware ignore rules
+├── README.md          generated, with run instructions for this language
+└── main.py            idiomatic starter that runs as-is
 ```
 
 ## Install
+
+### Homebrew (macOS / Linux)
+
+```sh
+brew install tanodev0/crpr/crpr
+```
+
+This taps `tanodev0/homebrew-crpr` and installs the `crpr` command. Upgrade later with `brew upgrade crpr`.
 
 ### macOS / Linux (Bash)
 
@@ -103,6 +113,7 @@ Everything is configured through environment variables — no config file requir
 | --- | --- | --- |
 | `CRPR_PROJECTS_DIR` | `~/Desktop/proyectos` | Base directory where projects are created. |
 | `CRPR_EDITOR` | `code` | Command used to open the project. Set to `none` to skip opening. |
+| `CRPR_NO_GIT` | unset | Set to `1` to skip `git init` and the generated `.gitignore`. |
 
 ```sh
 # Keep projects in ~/code and open with Sublime Text
@@ -153,9 +164,10 @@ Common aliases work too (`python`, `node`, `rust`, `golang`, `csharp`, `kotlin`,
 `crpr` is a single self-contained script with no runtime dependencies beyond a POSIX shell or PowerShell. It:
 
 1. Resolves the projects directory from `CRPR_PROJECTS_DIR`.
-2. Creates `<projects-dir>/<name>` (idempotent — an existing folder is reused).
+2. Creates `<projects-dir>/<name>` (idempotent, an existing folder is reused).
 3. If a language is given, writes the template files and a `README.md`.
-4. Opens the folder with `CRPR_EDITOR`.
+4. Runs `git init` and writes a language-aware `.gitignore`, unless `CRPR_NO_GIT=1` or the folder already sits inside a repository.
+5. Opens the folder with `CRPR_EDITOR`.
 
 ## License
 
