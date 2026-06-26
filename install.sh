@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
-# Installer for crpr on macOS / Linux.
-# Copies the `crpr` script into a directory on your PATH.
+# Installer for sprout on macOS / Linux.
+# Copies the `sprout` script into a directory on your PATH.
 #
 # Usage:
 #   ./install.sh            # installs to ~/.local/bin
@@ -10,25 +10,25 @@
 set -euo pipefail
 
 SRC_DIR="$(cd "$(dirname "$0")" && pwd)"
-SRC="$SRC_DIR/crpr"
+SRC="$SRC_DIR/sprout"
 
 # Default install location: ~/.local/bin (no sudo needed).
 BIN_DIR="${PREFIX:+$PREFIX/bin}"
 BIN_DIR="${BIN_DIR:-$HOME/.local/bin}"
 
 if [ ! -f "$SRC" ]; then
-  echo "Error: could not find 'crpr' next to this installer." >&2
+  echo "Error: could not find 'sprout' next to this installer." >&2
   exit 1
 fi
 
 mkdir -p "$BIN_DIR"
-install -m 0755 "$SRC" "$BIN_DIR/crpr"
-echo "Installed: $BIN_DIR/crpr"
+install -m 0755 "$SRC" "$BIN_DIR/sprout"
+echo "Installed: $BIN_DIR/sprout"
 
 # Check whether the target dir is on PATH.
 case ":$PATH:" in
   *":$BIN_DIR:"*)
-    echo "'$BIN_DIR' is already on your PATH. You're ready: try 'crpr --help'."
+    echo "'$BIN_DIR' is already on your PATH. You're ready: try 'sprout --help'."
     ;;
   *)
     echo

@@ -4,9 +4,9 @@
       <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.35"/>
     </filter>
     <clipPath id="reveal">
-      <rect x="48" y="74" width="128" height="22">
+      <rect x="48" y="74" width="144" height="22">
         <animate attributeName="width" dur="7s" repeatCount="indefinite"
-                 keyTimes="0;0.04;0.30;0.95;1" values="0;0;128;128;0"/>
+                 keyTimes="0;0.04;0.30;0.95;1" values="0;0;144;144;0"/>
       </rect>
     </clipPath>
   </defs>
@@ -16,19 +16,19 @@
   <circle cx="36" cy="30" r="6" fill="#ff5f56"/>
   <circle cx="58" cy="30" r="6" fill="#ffbd2e"/>
   <circle cx="80" cy="30" r="6" fill="#27c93f"/>
-  <text x="380" y="35" text-anchor="middle" fill="#6e7681" font-size="13">crpr — zsh</text>
+  <text x="380" y="35" text-anchor="middle" fill="#6e7681" font-size="13">sprout — zsh</text>
   <line x1="10" y1="50" x2="750" y2="50" stroke="#21262d"/>
 
   <!-- prompt (always visible) -->
   <text x="30" y="92" fill="#7ee787">$</text>
 
   <!-- typed command, revealed by the animated clip -->
-  <text x="48" y="92" clip-path="url(#reveal)"><tspan fill="#d2a8ff">crpr </tspan><tspan fill="#79c0ff">my-api py</tspan></text>
+  <text x="48" y="92" clip-path="url(#reveal)"><tspan fill="#d2a8ff">sprout </tspan><tspan fill="#79c0ff">my-api py</tspan></text>
 
   <!-- blinking caret that tracks the typing edge -->
   <rect y="78" width="9" height="16" fill="#7ee787">
     <animate attributeName="x" dur="7s" repeatCount="indefinite"
-             keyTimes="0;0.04;0.30;0.95;1" values="48;48;176;176;48"/>
+             keyTimes="0;0.04;0.30;0.95;1" values="48;48;192;192;48"/>
     <animate attributeName="opacity" dur="1s" repeatCount="indefinite"
              keyTimes="0;0.45;0.5;0.95;1" values="1;1;0;0;1"/>
   </rect>

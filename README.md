@@ -1,7 +1,11 @@
-<h1 align="center">crpr</h1>
+<p align="center">
+  <img src="docs/logo.svg" width="110" alt="sprout logo">
+</p>
+
+<h1 align="center">sprout</h1>
 
 <p align="center">
-  <strong>CR</strong>eate <strong>PR</strong>oyect — go from idea to a running project in a single command.
+  Grow a ready-to-run project in one command, in any of 47 languages.
 </p>
 
 <p align="center">
@@ -13,21 +17,21 @@
 </p>
 
 <p align="center">
-  <img src="docs/typing.svg" width="760" alt="crpr terminal animation">
+  <img src="docs/typing.svg" width="760" alt="sprout terminal animation">
 </p>
 
 ---
 
-`crpr my-api py` creates the folder, drops in a **ready-to-run** starter program plus a `README.md`, and opens it in your editor. One command instead of the usual *make folder → cd → create the entry file → write boilerplate → open editor*.
+`sprout my-api py` creates the folder, drops in a **ready-to-run** starter program plus a `README.md`, and opens it in your editor. One command instead of the usual *make folder → cd → create the entry file → write boilerplate → open editor*.
 
-The same `crpr <name> <language>` works across **47 languages**, so you never have to remember each toolchain's project layout.
+The same `sprout <name> <language>` works across **47 languages**, so you never have to remember each toolchain's project layout.
 
-## Why crpr
+## Why sprout
 
 - **Zero friction to start.** Idea to a running file in one command. No templates to copy, no boilerplate to recall.
 - **One mental model for every language.** Python, Rust, Go, C++, Haskell, Solidity — same command, predictable result.
 - **Real starters, not empty files.** Each template is a small idiomatic program with a function, a loop, command-line argument handling and formatted output. It compiles or runs immediately.
-- **Version control from the start.** Every scaffold is a git repository with a language-aware `.gitignore`, so your first commit stays clean. Opt out with `CRPR_NO_GIT=1`.
+- **Version control from the start.** Every scaffold is a git repository with a language-aware `.gitignore`, so your first commit stays clean. Opt out with `SPROUT_NO_GIT=1`.
 - **A README in every project.** Each scaffold ships with run instructions for that exact language.
 - **Customizable and portable.** Configure the projects directory and editor with environment variables. Bash, PowerShell and a `cmd.exe` launcher are included, so it drops into virtually any terminal.
 
@@ -51,16 +55,16 @@ my-api/                initialized git repository
 ### Homebrew (macOS / Linux)
 
 ```sh
-brew install tanodev0/crpr/crpr
+brew install tanodev0/sprout/sprout
 ```
 
-This taps `tanodev0/homebrew-crpr` and installs the `crpr` command. Upgrade later with `brew upgrade crpr`.
+This taps `tanodev0/homebrew-sprout` and installs the `sprout` command. Upgrade later with `brew upgrade sprout`.
 
 ### macOS / Linux (Bash)
 
 ```sh
-git clone https://github.com/tanodev0/crpr.git
-cd crpr
+git clone https://github.com/tanodev0/sprout.git
+cd sprout
 ./install.sh            # installs to ~/.local/bin
 ```
 
@@ -71,39 +75,39 @@ If `~/.local/bin` is not on your `PATH`, the installer prints the exact line to 
 ### Windows (PowerShell)
 
 ```powershell
-git clone https://github.com/tanodev0/crpr.git
-cd crpr
-./install.ps1           # installs to %LOCALAPPDATA%\Programs\crpr and updates PATH
+git clone https://github.com/tanodev0/sprout.git
+cd sprout
+./install.ps1           # installs to %LOCALAPPDATA%\Programs\sprout and updates PATH
 ```
 
-This makes `crpr` work in **both** PowerShell and the classic command prompt (`cmd.exe`) through the bundled `crpr.cmd` launcher. Open a new terminal afterwards.
+This makes `sprout` work in **both** PowerShell and the classic command prompt (`cmd.exe`) through the bundled `sprout.cmd` launcher. Open a new terminal afterwards.
 
 ### Manual
 
-Copy `crpr` (Bash) or `crpr.ps1` + `crpr.cmd` (Windows) to any directory on your `PATH`.
+Copy `sprout` (Bash) or `sprout.ps1` + `sprout.cmd` (Windows) to any directory on your `PATH`.
 
 ## Usage
 
 ```sh
-crpr <project-name> [language]
+sprout <project-name> [language]
 ```
 
 | Command | Result |
 | --- | --- |
-| `crpr notes` | Creates the folder only (no template) and opens it. |
-| `crpr my-api py` | Folder + Python starter + `README.md`. |
-| `crpr landing html` | Folder + `index.html` / `style.css` / `script.js`. |
-| `crpr engine cpp` | Folder + `main.cpp` starter. |
+| `sprout notes` | Creates the folder only (no template) and opens it. |
+| `sprout my-api py` | Folder + Python starter + `README.md`. |
+| `sprout landing html` | Folder + `index.html` / `style.css` / `script.js`. |
+| `sprout engine cpp` | Folder + `main.cpp` starter. |
 
 Flags:
 
 ```sh
-crpr --help       # show help
-crpr --langs      # list supported language codes
-crpr --version    # print version
+sprout --help       # show help
+sprout --langs      # list supported language codes
+sprout --version    # print version
 ```
 
-If the second argument is omitted, only the folder is created. If it is not a recognized language, `crpr` warns and still creates and opens the folder.
+If the second argument is omitted, only the folder is created. If it is not a recognized language, `sprout` warns and still creates and opens the folder.
 
 ## Configuration
 
@@ -111,24 +115,24 @@ Everything is configured through environment variables — no config file requir
 
 | Variable | Default | Purpose |
 | --- | --- | --- |
-| `CRPR_PROJECTS_DIR` | `~/Desktop/proyectos` | Base directory where projects are created. |
-| `CRPR_EDITOR` | `code` | Command used to open the project. Set to `none` to skip opening. |
-| `CRPR_NO_GIT` | unset | Set to `1` to skip `git init` and the generated `.gitignore`. |
+| `SPROUT_PROJECTS_DIR` | `~/Desktop/proyectos` | Base directory where projects are created. |
+| `SPROUT_EDITOR` | `code` | Command used to open the project. Set to `none` to skip opening. |
+| `SPROUT_NO_GIT` | unset | Set to `1` to skip `git init` and the generated `.gitignore`. |
 
 ```sh
 # Keep projects in ~/code and open with Sublime Text
-export CRPR_PROJECTS_DIR="$HOME/code"
-export CRPR_EDITOR="subl"
+export SPROUT_PROJECTS_DIR="$HOME/code"
+export SPROUT_EDITOR="subl"
 
 # Scaffold without opening anything
-CRPR_EDITOR=none crpr scratch py
+SPROUT_EDITOR=none sprout scratch py
 ```
 
 On Windows (PowerShell):
 
 ```powershell
-$env:CRPR_PROJECTS_DIR = "C:\code"
-$env:CRPR_EDITOR = "code"
+$env:SPROUT_PROJECTS_DIR = "C:\code"
+$env:SPROUT_EDITOR = "code"
 ```
 
 ## Supported languages
@@ -161,13 +165,13 @@ Common aliases work too (`python`, `node`, `rust`, `golang`, `csharp`, `kotlin`,
 
 ## How it works
 
-`crpr` is a single self-contained script with no runtime dependencies beyond a POSIX shell or PowerShell. It:
+`sprout` is a single self-contained script with no runtime dependencies beyond a POSIX shell or PowerShell. It:
 
-1. Resolves the projects directory from `CRPR_PROJECTS_DIR`.
+1. Resolves the projects directory from `SPROUT_PROJECTS_DIR`.
 2. Creates `<projects-dir>/<name>` (idempotent, an existing folder is reused).
 3. If a language is given, writes the template files and a `README.md`.
-4. Runs `git init` and writes a language-aware `.gitignore`, unless `CRPR_NO_GIT=1` or the folder already sits inside a repository.
-5. Opens the folder with `CRPR_EDITOR`.
+4. Runs `git init` and writes a language-aware `.gitignore`, unless `SPROUT_NO_GIT=1` or the folder already sits inside a repository.
+5. Opens the folder with `SPROUT_EDITOR`.
 
 ## License
 

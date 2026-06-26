@@ -12,13 +12,13 @@
   <circle cx="36" cy="30" r="6" fill="#ff5f56"/>
   <circle cx="58" cy="30" r="6" fill="#ffbd2e"/>
   <circle cx="80" cy="30" r="6" fill="#27c93f"/>
-  <text x="410" y="35" text-anchor="middle" fill="#6e7681" font-size="13">crpr — zsh</text>
+  <text x="410" y="35" text-anchor="middle" fill="#6e7681" font-size="13">sprout — zsh</text>
 
   <!-- separator -->
   <line x1="10" y1="50" x2="810" y2="50" stroke="#21262d"/>
 
   <!-- session -->
-  <text x="34" y="84"><tspan fill="#7ee787">$ </tspan><tspan fill="#d2a8ff">crpr </tspan><tspan fill="#79c0ff">my-api py</tspan></text>
+  <text x="34" y="84"><tspan fill="#7ee787">$ </tspan><tspan fill="#d2a8ff">sprout </tspan><tspan fill="#79c0ff">my-api py</tspan></text>
   <text x="34" y="110" fill="#8b949e">Created folder: ~/Desktop/proyectos/my-api</text>
   <text x="34" y="136" fill="#8b949e">Generated 'py' template in: ~/Desktop/proyectos/my-api</text>
 
