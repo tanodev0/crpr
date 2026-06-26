@@ -1,33 +1,39 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="760" height="180" viewBox="0 0 760 180" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14">
-  <defs><clipPath id="rc"><rect x="1" y="1" width="758" height="178" rx="8"/></clipPath></defs>
-  <g clip-path="url(#rc)">
-    <rect x="1" y="1" width="758" height="178" fill="#0d1117"/>
-    <rect x="1" y="1" width="758" height="34" fill="#161b22"/>
-    <line x1="210" y1="1" x2="210" y2="179" stroke="#21262d"/>
-    <line x1="330" y1="1" x2="330" y2="179" stroke="#21262d"/>
-    <line x1="1" y1="35" x2="759" y2="35" stroke="#21262d"/>
-    <line x1="1" y1="89" x2="759" y2="89" stroke="#21262d"/>
-    <line x1="1" y1="143" x2="759" y2="143" stroke="#21262d"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="252" viewBox="0 0 760 252" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14">
+  <defs>
+    <filter id="sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.35"/></filter>
+    <clipPath id="winc"><rect x="10" y="8" width="740" height="232" rx="10"/></clipPath>
+  </defs>
+  <rect x="10" y="8" width="740" height="232" rx="10" fill="#0d1117" stroke="#30363d" filter="url(#sh)"/>
+  <circle cx="36" cy="30" r="6" fill="#ff5f56"/><circle cx="58" cy="30" r="6" fill="#ffbd2e"/><circle cx="80" cy="30" r="6" fill="#27c93f"/>
+  <text x="380" y="35" text-anchor="middle" fill="#6e7681" font-size="12">Configuration</text>
+  <line x1="10" y1="50" x2="750" y2="50" stroke="#21262d"/>
+  <g clip-path="url(#winc)">
+    <rect x="10" y="58" width="740" height="34" fill="#161b22"/>
+    <line x1="210" y1="58" x2="210" y2="240" stroke="#21262d"/>
+    <line x1="330" y1="58" x2="330" y2="240" stroke="#21262d"/>
+    <line x1="10" y1="92" x2="750" y2="92" stroke="#21262d"/>
+    <line x1="10" y1="146" x2="750" y2="146" stroke="#21262d"/>
+    <line x1="10" y1="200" x2="750" y2="200" stroke="#21262d"/>
   </g>
   <g font-family="system-ui, -apple-system, sans-serif" font-weight="600" fill="#c9d1d9">
-    <text x="16" y="23">Variable</text>
-    <text x="220" y="23">Default</text>
-    <text x="340" y="23">Purpose</text>
+    <text x="22" y="80">Variable</text>
+    <text x="224" y="80">Default</text>
+    <text x="344" y="80">Purpose</text>
   </g>
   <g fill="#79c0ff">
-    <text x="16" y="67">SPROUT_PROJECTS_DIR</text>
-    <text x="16" y="121">SPROUT_EDITOR</text>
-    <text x="16" y="167">SPROUT_NO_GIT</text>
+    <text x="22" y="124">SPROUT_PROJECTS_DIR</text>
+    <text x="22" y="178">SPROUT_EDITOR</text>
+    <text x="22" y="222">SPROUT_NO_GIT</text>
   </g>
   <g font-family="system-ui, -apple-system, sans-serif">
-    <text x="220" y="67" fill="#c9d1d9">your OS Desktop</text>
-    <text x="220" y="121" fill="#c9d1d9">code</text>
-    <text x="220" y="167" fill="#8b949e">unset</text>
-    <text x="340" y="59" fill="#c9d1d9">Base directory where projects are created</text>
-    <text x="340" y="79" fill="#c9d1d9">(resolves the real Desktop on macOS, Linux and Windows).</text>
-    <text x="340" y="113" fill="#c9d1d9">Command used to open the project.</text>
-    <text x="340" y="133" fill="#c9d1d9">Set to none to skip opening.</text>
-    <text x="340" y="167" fill="#c9d1d9">Set to 1 to skip git init and the generated .gitignore.</text>
+    <text x="224" y="124" fill="#c9d1d9">your OS Desktop</text>
+    <text x="224" y="178" fill="#c9d1d9">code</text>
+    <text x="224" y="222" fill="#8b949e">unset</text>
+    <text x="344" y="116" fill="#c9d1d9">Base directory where projects are created</text>
+    <text x="344" y="136" fill="#c9d1d9">(resolves the real Desktop on macOS, Linux and Windows).</text>
+    <text x="344" y="170" fill="#c9d1d9">Command used to open the project.</text>
+    <text x="344" y="190" fill="#c9d1d9">Set to none to skip opening.</text>
+    <text x="344" y="222" fill="#c9d1d9">Set to 1 to skip git init and the generated .gitignore.</text>
   </g>
-  <rect x="1" y="1" width="758" height="178" rx="8" fill="none" stroke="#30363d"/>
+  <rect x="10" y="8" width="740" height="232" rx="10" fill="none" stroke="#30363d"/>
 </svg>

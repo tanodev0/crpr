@@ -46,7 +46,7 @@ A scaffold is a working program from the first second, not a blank file:
 <img src="docs/b-tree.svg" alt="Project structure">
 
 <details>
-<summary>Copiar</summary>
+<summary>Copy</summary>
 
 ```text
 my-api/                initialized git repository
@@ -64,7 +64,7 @@ my-api/                initialized git repository
 <img src="docs/b-brew.svg" alt="brew install tanodev0/sprout/sprout">
 
 <details>
-<summary>Copiar</summary>
+<summary>Copy</summary>
 
 ```sh
 brew install tanodev0/sprout/sprout
@@ -79,7 +79,7 @@ This taps `tanodev0/homebrew-sprout` and installs the `sprout` command. Upgrade 
 <img src="docs/b-install-bash.svg" alt="git clone, cd sprout, ./install.sh">
 
 <details>
-<summary>Copiar</summary>
+<summary>Copy</summary>
 
 ```sh
 git clone https://github.com/tanodev0/sprout.git
@@ -98,7 +98,7 @@ If `~/.local/bin` is not on your `PATH`, the installer prints the exact line to 
 <img src="docs/b-install-ps.svg" alt="git clone, cd sprout, ./install.ps1">
 
 <details>
-<summary>Copiar</summary>
+<summary>Copy</summary>
 
 ```powershell
 git clone https://github.com/tanodev0/sprout.git
@@ -119,7 +119,7 @@ Copy `sprout` (Bash) or `sprout.ps1` + `sprout.cmd` (Windows) to any directory o
 <img src="docs/b-usage.svg" alt="sprout <project-name> [language]">
 
 <details>
-<summary>Copiar</summary>
+<summary>Copy</summary>
 
 ```sh
 sprout <project-name> [language]
@@ -130,7 +130,7 @@ sprout <project-name> [language]
 <img src="docs/t-usage.svg" alt="Usage examples table">
 
 <details>
-<summary>Copiar</summary>
+<summary>Copy</summary>
 
 | Command | Result |
 | --- | --- |
@@ -146,7 +146,7 @@ Flags:
 <img src="docs/b-flags.svg" alt="sprout --help, --langs, --version">
 
 <details>
-<summary>Copiar</summary>
+<summary>Copy</summary>
 
 ```sh
 sprout --help       # show help
@@ -165,7 +165,7 @@ Everything is configured through environment variables — no config file requir
 <img src="docs/t-config.svg" alt="Configuration environment variables table">
 
 <details>
-<summary>Copiar</summary>
+<summary>Copy</summary>
 
 | Variable | Default | Purpose |
 | --- | --- | --- |
@@ -178,7 +178,7 @@ Everything is configured through environment variables — no config file requir
 <img src="docs/b-config-env.svg" alt="Configuration via environment variables">
 
 <details>
-<summary>Copiar</summary>
+<summary>Copy</summary>
 
 ```sh
 # Keep projects in ~/code and open with Sublime Text
@@ -196,7 +196,7 @@ On Windows (PowerShell):
 <img src="docs/b-config-ps.svg" alt="Configuration on Windows PowerShell">
 
 <details>
-<summary>Copiar</summary>
+<summary>Copy</summary>
 
 ```powershell
 $env:SPROUT_PROJECTS_DIR = "C:\code"
@@ -227,7 +227,7 @@ All 47 codes:
 <img src="docs/b-langs.svg" alt="All 47 supported language codes">
 
 <details>
-<summary>Copiar</summary>
+<summary>Copy</summary>
 
 ```text
 py  js  ts  c   cpp java go  rs  rb  sh  html php  swift kt cs

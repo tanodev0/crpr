@@ -1,7 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="820" height="106" viewBox="0 0 820 106" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14">
-  <rect x="1" y="1" width="818" height="104" rx="8" fill="#0d1117" stroke="#30363d"/>
-  <text x="802" y="22" text-anchor="end" fill="#6e7681" font-size="12">powershell</text>
-  <text x="20" y="46" xml:space="preserve" fill="#c9d1d9">git clone https://github.com/tanodev0/sprout.git</text>
-  <text x="20" y="68" xml:space="preserve" fill="#c9d1d9">cd sprout</text>
-  <text x="20" y="90" xml:space="preserve"><tspan fill="#c9d1d9">./install.ps1</tspan><tspan fill="#8b949e">           # installs to %LOCALAPPDATA%\Programs\sprout and updates PATH</tspan></text>
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="154" viewBox="0 0 820 154" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14">
+  <defs><filter id="sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.35"/></filter></defs>
+  <rect x="10" y="8" width="800" height="134" rx="10" fill="#0d1117" stroke="#30363d" filter="url(#sh)"/>
+  <circle cx="36" cy="30" r="6" fill="#ff5f56"/><circle cx="58" cy="30" r="6" fill="#ffbd2e"/><circle cx="80" cy="30" r="6" fill="#27c93f"/>
+  <text x="410" y="35" text-anchor="middle" fill="#6e7681" font-size="12">powershell</text>
+  <line x1="10" y1="50" x2="810" y2="50" stroke="#21262d"/>
+  <text x="34" y="78" xml:space="preserve"><tspan fill="#7ee787">PS&gt; </tspan><tspan fill="#c9d1d9">git clone https://github.com/tanodev0/sprout.git</tspan></text>
+  <text x="34" y="102" xml:space="preserve"><tspan fill="#7ee787">PS&gt; </tspan><tspan fill="#c9d1d9">cd sprout</tspan></text>
+  <text x="34" y="126" xml:space="preserve"><tspan fill="#7ee787">PS&gt; </tspan><tspan fill="#c9d1d9">./install.ps1</tspan><tspan fill="#8b949e">           # installs to %LOCALAPPDATA%\Programs\sprout and updates PATH</tspan></text>
 </svg>
