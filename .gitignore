@@ -1,0 +1,9 @@
+# Local test output
+/test-output/
+/tmp/
+
+# OS / editor cruft
+.DS_Store
+*.swp
+.idea/
+.vscode/
