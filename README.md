@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/logo.svg" width="110" alt="sprout logo">
+  <img src="docs/logo.png" width="180" alt="sprout logo">
 </p>
 
 <h1 align="center">sprout</h1>
